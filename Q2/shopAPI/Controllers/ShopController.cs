@@ -10,18 +10,26 @@ namespace shopAPI.Controllers
     [ApiController]
     public class ShopController : ControllerBase
     {
+        private static int count = 1;
+        private static List<Products> allproduct = new List<Products>();
 
         [HttpPost]
         public void Post([FromBody] Products value)
         {
-
+            var newproduct = new Products
+            {
+                Id = ($"P{count++}"),
+                Name = value.Name,
+                Price = value.Price,
+            };
+            allproduct.Add(newproduct);
         }
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Products>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return allproduct;
         }
 
 
