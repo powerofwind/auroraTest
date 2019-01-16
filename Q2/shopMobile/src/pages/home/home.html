@@ -11,17 +11,18 @@
   <h3>เพิ่มรายการของสินค้าที่ต้องการขาย</h3>
 
   <ion-item>
-    <ion-label col-1>ชื่อสินค้า</ion-label>
+    <ion-label col-2>ชื่อสินค้า</ion-label>
     <ion-input type="text" [(ngModel)]="Price"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label col-1>ราคา</ion-label>
+    <ion-label col-2>ราคาต่อหน่วย</ion-label>
     <ion-input type="number" [(ngModel)]="Amount"></ion-input>
   </ion-item>
 
+  <button ion-button block >เพิ่มสินค้า</button>
+  <button ion-button block (click)="add()">ดูสินค้า</button>
   <!-- <button ion-button block (click)="Order()">สั่งซ์้อสินค้า</button>
   <button ion-button block (click)="push()">ดูสินค้า</button> -->
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>

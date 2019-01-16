@@ -8,16 +8,34 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
-  </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
+  <h3 text-center>รายการสินค้าที่มีอยู่</h3>
+
+ 
+    <ion-row>
+      <ion-item col-4 text-center>รหัสสินค้า</ion-item>
+      <ion-item col-4 text-center>ชื่อสินค้า</ion-item>
+      <ion-item col-4 text-center>ราคา</ion-item>
+    </ion-row>
+
+    <!-- <ion-row *ngFor="let item of allproduct">
+    <ion-item col-2 text-center>{{item.id}} </ion-item>
+    <ion-item col-2 text-center>{{item.name}}</ion-item>
+    <ion-item col-2 text-center>{{item.price}}</ion-item>
+  </ion-row> -->
+  
+
+  <ion-card>
+  <h3 text-center padding>เพิ่มสินค้าลงตะกร้า</h3>
+  <ion-item>
+      <ion-label col-2>รหัสสินค้า</ion-label>
+      <ion-input type="text" [(ngModel)]="Price"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label col-2>จำนวนที่ต้องการสั่งซื้อ</ion-label>
+      <ion-input type="number" [(ngModel)]="Amount"></ion-input>
+    </ion-item>
+  
+    <button ion-button block >สั่งซื้อ</button>
+  </ion-card>
 </ion-content>
