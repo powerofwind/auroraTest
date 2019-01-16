@@ -13,25 +13,37 @@ export class HomePage {
   public Name: string;
   public Price: number;
 
-  constructor(public navCtrl: NavController,public http: HttpClient) {
+  constructor(public navCtrl: NavController, public http: HttpClient) {
   }
-  
-  order(){
-    this.http.post<products>("https://localhost:5001/api/Shop",
-    {
-      Name: this.Name,
-      Price: this.Price
 
-    }).subscribe(
+  order() {
+    this.http.post<products>("https://localhost:5001/api/Shop",
+      {
+        Name: this.Name,
+        Price: this.Price
+
+      }).subscribe(
         it => {
-        console.log('success')
-        }, 
+          console.log('success')
+        },
         error => {
-            // ERROR: Do something
+          // ERROR: Do something
         });
   }
 
-  add(){
+  UpdateOrderHistory(productName: string) {
+    var url = "http://localhost:5000/api/Order/" + productName;
+    this.http.put(url,
+      {
+        Name: this.Name,
+      }).subscribe(
+        it => {
+          // this.refreshPage();
+          console.log('Update')
+        });
+  }
+
+  add() {
     this.navCtrl.push(ListPage)
   }
 

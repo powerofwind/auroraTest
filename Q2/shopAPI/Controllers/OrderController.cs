@@ -8,7 +8,7 @@ namespace shopAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ShopController : ControllerBase
+    public class OrderController : ControllerBase
     {
         private static int count = 1;
         private static List<Products> allproduct = new List<Products>();
@@ -33,20 +33,20 @@ namespace shopAPI.Controllers
             return allproduct;
         }
 
-        // [HttpPut("{name}")]
-        // public void Put(string name, [FromBody] Products value)
-        // {
-        //     var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
-        //     if (selectedProduct == null)
-        //     {
-        //         return;
-        //     }
+        [HttpPut("{name}")]
+        public void Put(string name, [FromBody] Products value)
+        {
+            var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
+            if (selectedProduct == null)
+            {
+                return;
+            }
 
-        //     selectedProduct.Amount += value.Amount;
-
-
+            selectedProduct.Amount += value.Amount;
 
 
-        // }
+
+
+        }
     }
 }

@@ -13,6 +13,7 @@ export class ListPage {
   public allproduct: products
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
+  // this.refreshPage()
   }
 
   ionViewDidLoad() {
@@ -25,6 +26,14 @@ export class ListPage {
           // ERROR: Do something
       });
   }
+
+  // refreshPage(){
+  //   this.http.get<products>("https://localhost:5001/api/Shop").subscribe(
+  //     it => {
+  //       this.allproduct = it;
+  //     });
+  //   }
+
   cart(){
     this.navCtrl.push(CartPage)
   }
