@@ -41,28 +41,5 @@ namespace shopAPI.Controllers
         {
             return orderproduct;
         }
-
-
-        // [HttpGet("GetDiscount")]
-        // public discount GetDiscount()
-        // {
-        //     double sumTotal = 0;
-
-        //     for (var i = 0; i < orderproduct.Count; i++)
-        //     {
-        //         sumTotal += orderproduct[i].Total;
-        //     }
-           
-        //    //double productAVG = (sumTotal / sumAmount);
-
-        //    var discountt = new discount
-        //     {
-        //         discountGroup = orderproduct,
-        //         Sumtotal = sumTotal
-                
-
-        //     };
-        //     return discountt;
-        // }
     }
 }
