@@ -31,18 +31,5 @@ namespace shopAPI.Controllers
         {
             return allproduct;
         }
-
-
-        [HttpPut]
-        public void Put(string name,[FromBody] Products value)
-        {
-            var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
-            if (selectedProduct != null)
-            {
-                selectedProduct.Amount += value.Amount;
-            }
-            return;
-
-        }
     }
 }
