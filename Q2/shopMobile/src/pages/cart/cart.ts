@@ -11,18 +11,28 @@ import { order } from '../../models/order';
 })
 export class CartPage {
 
-public orderProduct: order[];
+  public orderProduct: order[];
+  public sumTotal: number = 0 ;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
   }
 
   ionViewDidLoad() {
     this.http.get<order[]>("https://localhost:5001/api/Order").subscribe(
       it => {
         this.orderProduct = it;
-        console.log(this.orderProduct);
+        this.calculate(this.orderProduct);
       },
-      );
+    );
   }
+
+   calculate(data: order[]) {
+    for (var i = 0; i < data.length; i++) {
+      this.sumTotal += data[i].total;
+    }
+  }
+
+
 
 }

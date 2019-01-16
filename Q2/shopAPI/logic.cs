@@ -2,9 +2,9 @@ namespace shopAPI
 {
     public class logic
     {
-        public double discount(int amount, int price)
+        public int discount(int amount, int price)
         {
-            return amount/4 * price;
+            return (amount-(amount/4 ))* price;
         }
     }
 }

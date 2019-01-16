@@ -8,14 +8,9 @@
 </ion-header>
 
 <ion-content>
- <h3 text-center>รายละเอียดในแต่ละปี</h3>
+  <h3 text-center>รายละเอียดในแต่ละปี</h3>
 
-<ion-row *ngFor="let item of allproduct">
-<ion-item col-3 text-center>ปีที่้{{item.name}}:</ion-item>
-<ion-item col-3 text-center>คงค้าง{{item.amount}}</ion-item>
-<ion-item col-3 text-center>ดอกเบี้ย{{item.price}} =</ion-item>
-<ion-item col-3 text-center>{{item.total}} x {{item.total}}/100</ion-item>
-<ion-item col-3 text-center>ยอดที่ต้องชำระ{{item.total}}</ion-item>
-
-</ion-row>
+  <ion-row *ngFor="let item of interest">
+    <ion-item  text-center>ปีที่{{item.count}}: คงค้าง{{item.money}} ดอกเบี้ย{{item.money2}} = {{item.money}} x {{item.interest}}/100 ยอดที่ต้องชำระ{{item.pay}}  </ion-item>
+  </ion-row>
 </ion-content>

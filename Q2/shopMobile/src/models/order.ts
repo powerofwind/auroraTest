@@ -3,4 +3,5 @@ export class order {
     public price: number;
     public amount: number;
     public total: number;
+    public discount: number;
 }

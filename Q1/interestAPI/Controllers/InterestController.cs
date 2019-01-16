@@ -16,56 +16,28 @@ namespace interestAPI.Controllers
         [HttpPost]
         public void Post([FromBody] interest value)
         {
+            int sumMoney = 0;
             for (int i = 0; i < value.Yearcount; i++)
             {
                 var newinterest = new interest
                 {
                     Count = count++,
-                    Interest = value.Interest,
-                    Yearcount = value.Yearcount,
                     Money = value.Money,
-                    Pay = new logic().interestLogic(value.Money, value.Interest)
-
+                    Money2 = (value.Money*value.Interest)/100,
+                    Interest = value.Interest,
+                    Pay = new logic().interestLogic(value.Money, value.Interest),
+                    Yearcount = value.Yearcount,
                 };
                 allinterest.Add(newinterest);
             }
-
-
         }
-        //  double sumTotal = 0;
-        //     double sumAmount = 0;
-
-        //     for (var i = 0; i < allproduct.Count; i++)
-        //     {
-        //         sumTotal += allproduct[i].Total;
-        //         sumAmount += allproduct[i].Amount;
-        //     }
-
-        //    double productAVG = (sumTotal / sumAmount);
-
-        //     var allAVG = new ProductsAVG
-        //     {
-        //         ProductGroup = allproduct,
-        //         Average = Math.Round(productAVG, 2)
-        //     };
-        //     return allAVG;
-
+       
 
         [HttpGet]
         public ActionResult<IEnumerable<interest>> Get()
         {
             return allinterest;
         }
-
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
-        {
-            return "value";
-        }
-
-
-
 
     }
 }

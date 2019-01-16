@@ -23,10 +23,7 @@ export class ListPage {
       it => {
         this.allproduct = it;
         console.log(this.allproduct);
-      },
-      error => {
-        // ERROR: Do something
-      });
+      },);
   }
 
   order() {
@@ -38,10 +35,7 @@ export class ListPage {
       }).subscribe(
         it => {
           console.log('ordersuccess')
-        },
-        error => {
-          // ERROR: Do something
-        });
+        },);
   }
 
   // refreshPage(){
