@@ -10,7 +10,14 @@ namespace shopAPI.Controllers
     [ApiController]
     public class ShopController : ControllerBase
     {
-        // GET api/values
+
+        [HttpPost]
+        public void Post([FromBody] Products value)
+        {
+
+        }
+
+
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
@@ -18,12 +25,8 @@ namespace shopAPI.Controllers
         }
 
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-    
+
+
     }
 }
