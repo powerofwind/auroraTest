@@ -5,4 +5,5 @@ export class interest {
     public money2: number;
     public interest: number;
     public pay: number;
+    public summoney: number;
 }

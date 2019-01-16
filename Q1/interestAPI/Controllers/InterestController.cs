@@ -16,14 +16,16 @@ namespace interestAPI.Controllers
         [HttpPost]
         public void Post([FromBody] interest value)
         {
-            int sumMoney = 0;
+            // double Sum = (value.Money * value.Interest) / 100;
+            // Sum = 0;
             for (int i = 0; i < value.Yearcount; i++)
             {
                 var newinterest = new interest
                 {
                     Count = count++,
                     Money = value.Money,
-                    Money2 = (value.Money*value.Interest)/100,
+                    Money2 = (value.Money * value.Interest) / 100,
+                    Summoney = (value.Money) += (value.Money * value.Interest) / 100,
                     Interest = value.Interest,
                     Pay = new logic().interestLogic(value.Money, value.Interest),
                     Yearcount = value.Yearcount,
@@ -31,7 +33,7 @@ namespace interestAPI.Controllers
                 allinterest.Add(newinterest);
             }
         }
-       
+
 
         [HttpGet]
         public ActionResult<IEnumerable<interest>> Get()
