@@ -2,6 +2,5 @@ Q1 = Question1
 test/api/ui ทำเสร็จ 
 -----------------------------------
 Q2 = Question2
-test ทำเสร็จ
-api  เรียกมาได้หมด binding ได้
+test/api/ui ทำเสร็จ 
 เขียน code ผลรวมใน ui นอกนั้นเรียกมาจาก api
