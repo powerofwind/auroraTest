@@ -10,21 +10,38 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ListPage {
 
-  public allproduct: products
+  public allproduct: products;
+  public Name: string;
+  public Amount: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public http: HttpClient) {
-  // this.refreshPage()
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {
+    this.ionViewDidLoad()
   }
 
   ionViewDidLoad() {
     this.http.get<products>("https://localhost:5001/api/Shop").subscribe(
       it => {
-          this.allproduct = it;
-          console.log(this.allproduct);
-      }, 
+        this.allproduct = it;
+        console.log(this.allproduct);
+      },
       error => {
-          // ERROR: Do something
+        // ERROR: Do something
       });
+  }
+
+  order() {
+    this.http.post("https://localhost:5001/api/Order",
+      {
+        Name: this.Name,
+        Amount: this.Amount
+
+      }).subscribe(
+        it => {
+          console.log('ordersuccess')
+        },
+        error => {
+          // ERROR: Do something
+        });
   }
 
   // refreshPage(){
@@ -34,7 +51,7 @@ export class ListPage {
   //     });
   //   }
 
-  cart(){
+  cart() {
     this.navCtrl.push(CartPage)
   }
 }

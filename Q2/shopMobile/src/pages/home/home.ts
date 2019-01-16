@@ -12,15 +12,17 @@ export class HomePage {
 
   public Name: string;
   public Price: number;
+  public Amount: number;
 
   constructor(public navCtrl: NavController, public http: HttpClient) {
   }
 
-  order() {
+  add() {
     this.http.post<products>("https://localhost:5001/api/Shop",
       {
         Name: this.Name,
-        Price: this.Price
+        Price: this.Price,
+        Amount: this.Amount
 
       }).subscribe(
         it => {
@@ -31,8 +33,8 @@ export class HomePage {
         });
   }
 
-  UpdateOrderHistory(productName: string) {
-    var url = "http://localhost:5000/api/Order/" + productName;
+  UpdateOrderHistory(productName: string,amount: number) {
+    var url = "http://localhost:5000/api/Order/" + productName + amount;
     this.http.put(url,
       {
         Name: this.Name,
@@ -43,7 +45,7 @@ export class HomePage {
         });
   }
 
-  add() {
+  shopping() {
     this.navCtrl.push(ListPage)
   }
 

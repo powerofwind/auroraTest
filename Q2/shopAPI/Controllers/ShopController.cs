@@ -11,17 +11,16 @@ namespace shopAPI.Controllers
     public class ShopController : ControllerBase
     {
         private static int count = 1;
-        private static List<Products> allproduct = new List<Products>();
+        public static List<Products> allproduct = new List<Products>();
 
         [HttpPost]
         public void Post([FromBody] Products value)
         {
             var newproduct = new Products
             {
-                Id = ($"P{count++}"),
                 Name = value.Name,
                 Price = value.Price,
-                Amount = value.Amount,
+                Amount = (value.Amount++),
             };
             allproduct.Add(newproduct);
         }
@@ -33,20 +32,21 @@ namespace shopAPI.Controllers
             return allproduct;
         }
 
-        // [HttpPut("{name}")]
-        // public void Put(string name, [FromBody] Products value)
-        // {
-        //     var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
-        //     if (selectedProduct == null)
-        //     {
-        //         return;
-        //     }
 
-        //     selectedProduct.Amount += value.Amount;
-
-
+        [HttpPut]
+        public void Put(string name,[FromBody] Products value)
+        {
+            var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
+            if (selectedProduct != null)
+            {
+                selectedProduct.Amount += value.Amount;
+            }
+            return;
 
 
-        // }
+
+
+
+        }
     }
 }

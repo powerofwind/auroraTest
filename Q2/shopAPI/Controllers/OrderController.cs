@@ -10,43 +10,53 @@ namespace shopAPI.Controllers
     [ApiController]
     public class OrderController : ControllerBase
     {
-        private static int count = 1;
-        private static List<Products> allproduct = new List<Products>();
+        private static List<Cart> orderproduct = new List<Cart>();
 
         [HttpPost]
-        public void Post([FromBody] Products value)
+        public void Post([FromBody] Order value)
         {
-            var newproduct = new Products
+            // ดึงรายการสินค้าทั้งหมดที่มีมา
+            var productCtr = new ShopController();
+            var allProducts = productCtr.Get();
+
+            //หาสินค้าที่ผู้ใช้เลือกซื้อว่ามีหรือเปล่า
+            //TODO
+            //var selectedProduct = allProducts.FirstOrDefault();
+            // if (selectedProduct == null)
+            // {
+            //     // ไม่มีสินค้าที่ผู้ใช้เลือก ไม่ทำต่อ
+            //     return;
+            // }
+
+            var neworder = new Order
             {
-                Id = ($"P{count++}"),
-                Name = value.Name,
-                Price = value.Price,
                 Amount = value.Amount,
+               // Total = value.price * value.amount
             };
-            allproduct.Add(newproduct);
+            orderproduct.Add(neworder);
         }
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Products>> Get()
+        public ActionResult<IEnumerable<Order>> Get()
         {
-            return allproduct;
+            return orderproduct;
         }
 
-        [HttpPut("{name}")]
-        public void Put(string name, [FromBody] Products value)
-        {
-            var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
-            if (selectedProduct == null)
-            {
-                return;
-            }
+        // [HttpPut("{name}")]
+        // public void Put(string name, [FromBody] Products value)
+        // {
+        //     var selectedProduct = allproduct.FirstOrDefault(it => it.Name == name);
+        //     if (selectedProduct == null)
+        //     {
+        //         return;
+        //     }
 
-            selectedProduct.Amount += value.Amount;
-
-
+        //     selectedProduct.Amount += value.Amount;
 
 
-        }
+
+
+        // }
     }
 }

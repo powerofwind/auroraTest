@@ -12,23 +12,25 @@
 
  
     <ion-row>
-      <ion-item col-4 text-center>รหัสสินค้า</ion-item>
+      <!-- <ion-item col-3 text-center>รหัสสินค้า</ion-item> -->
       <ion-item col-4 text-center>ชื่อสินค้า</ion-item>
       <ion-item col-4 text-center>ราคา</ion-item>
+      <ion-item col-4 text-center>จำนวน</ion-item>
     </ion-row>
 
     <ion-row *ngFor="let item of allproduct">
-    <ion-item col-4 text-center>{{item.id}} </ion-item>
+    <!-- <ion-item col-3 text-center>{{item.id}} </ion-item> -->
     <ion-item col-4 text-center>{{item.name}}</ion-item>
     <ion-item col-4 text-center>{{item.price}}</ion-item>
+    <ion-item col-4 text-center>{{item.amount}}</ion-item>
   </ion-row>
   
 
   <ion-card>
   <h3 text-center padding>เพิ่มสินค้าลงตะกร้า</h3>
   <ion-item>
-      <ion-label col-2>รหัสสินค้า</ion-label>
-      <ion-input type="text" [(ngModel)]="id"></ion-input>
+      <ion-label col-2>ชื่อสินค้า</ion-label>
+      <ion-input type="text" [(ngModel)]="Name"></ion-input>
     </ion-item>
   
     <ion-item>
@@ -36,7 +38,7 @@
       <ion-input type="number" [(ngModel)]="Amount"></ion-input>
     </ion-item>
   
-    <button ion-button block >สั่งซื้อ</button>
+    <button ion-button block (click)="order()">สั่งซื้อ</button>
     <button ion-button block (click)="cart()">ไปยังตะกร้าสินค้า</button>
 
   </ion-card>
