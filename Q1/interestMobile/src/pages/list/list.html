@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>คำนวณยอดรายปี</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3 text-center>รายละเอียดในแต่ละปี</h3>
+
+  <ion-row *ngFor="let item of interest">
+    <ion-item  text-center>ปีที่{{item.count}}: คงค้าง{{item.money}} ดอกเบี้ย{{item.money2}} 
+      = {{item.money}} x {{item.interest}}/100 ยอดที่ต้องชำระ {{item.pay}}  </ion-item>
+  </ion-row>
+</ion-content>

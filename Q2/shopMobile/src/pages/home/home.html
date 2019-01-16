@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>AddProduct</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>เพิ่มรายการของสินค้าที่ต้องการขาย</h3>
+
+  <ion-item>
+    <ion-label col-2>ชื่อสินค้า</ion-label>
+    <ion-input type="text" [(ngModel)]="Name"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label col-2>ราคาต่อหน่วย</ion-label>
+    <ion-input type="number" [(ngModel)]="Price"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="add()">เพิ่มสินค้า</button>
+  <button ion-button block (click)="shopping()">ดูสินค้า</button>
+
+</ion-content>

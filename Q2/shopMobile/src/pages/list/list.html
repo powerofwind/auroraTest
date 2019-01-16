@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Shopping</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <h3 text-center>รายการสินค้าที่มีอยู่</h3>
+
+ 
+  <ion-card>
+    <ion-row>
+      <ion-item col-6 text-center>ชื่อสินค้า</ion-item>
+      <ion-item col-6 text-center>ราคา</ion-item>
+    </ion-row>
+
+    <ion-row *ngFor="let item of allproduct">
+    <ion-item col-6 text-center>{{item.name}}</ion-item>
+    <ion-item col-6 text-center>{{item.price}}</ion-item>
+  </ion-row>
+</ion-card>
+  
+
+  <h3 text-center padding>เพิ่มสินค้าลงตะกร้า</h3>
+  <ion-item>
+      <ion-label col-2>ชื่อสินค้า</ion-label>
+      <ion-input type="text" [(ngModel)]="Name"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label col-2>จำนวนที่ต้องการสั่งซื้อ</ion-label>
+      <ion-input type="number" [(ngModel)]="Amount"></ion-input>
+    </ion-item>
+  
+    <button ion-button block (click)="order()">สั่งซื้อ</button>
+    <button ion-button block (click)="cart()">ไปยังตะกร้าสินค้า</button>
+
+</ion-content>

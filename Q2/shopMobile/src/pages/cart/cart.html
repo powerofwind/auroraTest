@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Cart</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h3 text-center>ตะกร้าสินค้า</h3>
+
+    <ion-row>
+      <ion-item col-3 text-center>ชื่อสินค้า</ion-item>
+      <ion-item col-3 text-center>จำนวน</ion-item>
+      <ion-item col-3 text-center>ราคา</ion-item>
+      <ion-item col-3 text-center>ยอดรวมต่อรายการ</ion-item>
+    </ion-row>
+
+    <ion-row *ngFor="let item of orderProduct">
+    <ion-item col-3 text-center>{{item.name}}</ion-item>
+    <ion-item col-3 text-center>{{item.amount}}</ion-item>
+    <ion-item col-3 text-center>{{item.price}}</ion-item>
+    <ion-item col-3 text-center>{{item.total}}</ion-item>
+
+  </ion-row>
+  <ion-row>
+    <ion-item text-right padding>ราคารวม {{sumTotal}} บาท</ion-item>
+    <ion-item text-right padding *ngFor="let item of orderProduct">ส่วนลดคือ {{item.discount}} บาท</ion-item>
+    <ion-item text-right padding *ngFor="let item of orderProduct">ราคาสุทธิ {{sumTotal - item.discount}} บาท</ion-item>
+  </ion-row>
+</ion-content>
