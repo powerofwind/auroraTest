@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { CartPage } from '../cart/cart';
 
 @Component({
   selector: 'page-list',
@@ -12,5 +13,7 @@ export class ListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad CartPage');
   }
-
+  cart(){
+    this.navCtrl.push(CartPage)
+  }
 }
