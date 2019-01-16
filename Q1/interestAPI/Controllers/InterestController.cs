@@ -16,8 +16,6 @@ namespace interestAPI.Controllers
         [HttpPost]
         public void Post([FromBody] interest value)
         {
-            // double Sum = (value.Money * value.Interest) / 100;
-            // Sum = 0;
             for (int i = 0; i < value.Yearcount; i++)
             {
                 var newinterest = new interest
@@ -25,11 +23,12 @@ namespace interestAPI.Controllers
                     Count = count++,
                     Money = value.Money,
                     Money2 = (value.Money * value.Interest) / 100,
-                    Summoney = (value.Money) += (value.Money * value.Interest) / 100,
+                    Summoney = (value.Money) + (value.Money * value.Interest) / 100,
                     Interest = value.Interest,
                     Pay = new logic().interestLogic(value.Money, value.Interest),
                     Yearcount = value.Yearcount,
                 };
+                value.Money = newinterest.Pay;
                 allinterest.Add(newinterest);
             }
         }
