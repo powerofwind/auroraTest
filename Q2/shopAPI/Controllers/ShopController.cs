@@ -43,10 +43,6 @@ namespace shopAPI.Controllers
             }
             return;
 
-
-
-
-
         }
     }
 }

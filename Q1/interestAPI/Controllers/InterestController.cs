@@ -11,20 +11,46 @@ namespace interestAPI.Controllers
     public class InterestController : ControllerBase
     {
         public static List<interest> allinterest = new List<interest>();
+        private static int count = 1;
 
         [HttpPost]
         public void Post([FromBody] interest value)
         {
-            var newinterest = new interest
+            for (int i = 0; i < value.Yearcount; i++)
             {
-                Interest = value.Interest,
-                
-            };
-            allinterest.Add(newinterest);
+                var newinterest = new interest
+                {
+                    Count = count++,
+                    Interest = value.Interest,
+                    Yearcount = value.Yearcount,
+                    Money = value.Money,
+                    Pay = new logic().interestLogic(value.Money, value.Interest)
+
+                };
+                allinterest.Add(newinterest);
+            }
+
 
         }
+        //  double sumTotal = 0;
+        //     double sumAmount = 0;
 
-      
+        //     for (var i = 0; i < allproduct.Count; i++)
+        //     {
+        //         sumTotal += allproduct[i].Total;
+        //         sumAmount += allproduct[i].Amount;
+        //     }
+
+        //    double productAVG = (sumTotal / sumAmount);
+
+        //     var allAVG = new ProductsAVG
+        //     {
+        //         ProductGroup = allproduct,
+        //         Average = Math.Round(productAVG, 2)
+        //     };
+        //     return allAVG;
+
+
         [HttpGet]
         public ActionResult<IEnumerable<interest>> Get()
         {

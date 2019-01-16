@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { HttpClient } from '@angular/common/http';
+import { interest } from '../../models/interest';
 
 @Component({
   selector: 'page-list',
@@ -7,7 +9,9 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ListPage {
   
-  constructor(public navCtrl: NavController) {
+  public interest: interest[];
+  
+  constructor(public navCtrl: NavController,public http: HttpClient) {
 
   }
 }

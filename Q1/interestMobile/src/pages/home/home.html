@@ -8,14 +8,24 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>กำหนดอัตราดอกเบี้ย</h3>
+  <h3>กำหนดอัตราดอกเบี้ย เงินต้น และจำนวนปี</h3>
 
   <ion-item>
     <ion-label col-1>อัตราดอกเบี้ย</ion-label>
     <ion-input type="text" [(ngModel)]="Interest"></ion-input>
   </ion-item>
 
-  <button ion-button block >กำหนดอัตราดอกเบี้ย</button>
+  <ion-item>
+    <ion-label col-1>เงินต้น</ion-label>
+    <ion-input type="text" [(ngModel)]="money"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label col-1>จำนวนปี</ion-label>
+    <ion-input type="text" [(ngModel)]="yearcount"></ion-input>
+  </ion-item>
+
+  <button ion-button block (click)="send()">ส่ง</button>
   <button ion-button block (click)="nextpage()" >คำนวณยอดรายปี</button>
 
 </ion-content>

@@ -17,28 +17,29 @@ namespace shopAPI.Controllers
         {
             // ดึงรายการสินค้าทั้งหมดที่มีมา
             var productCtr = new ShopController();
-            var allProducts = productCtr.Get();
+            var allProducts = productCtr.Get().Value;
 
             //หาสินค้าที่ผู้ใช้เลือกซื้อว่ามีหรือเปล่า
-            //TODO
-            //var selectedProduct = allProducts.FirstOrDefault();
-            // if (selectedProduct == null)
-            // {
-            //     // ไม่มีสินค้าที่ผู้ใช้เลือก ไม่ทำต่อ
-            //     return;
-            // }
-
-            var neworder = new Order
+            var selectedProduct = allProducts.FirstOrDefault(it => it.Name == value.Name);
+            if (selectedProduct == null)
             {
+                return;
+            }
+
+            // มีสินค้าที่ผู้ใช้เลือก ทำการบันทึกประวัติการสั่งซื้อ
+            var addOrder = new Cart
+            {
+                Name = selectedProduct.Name,
+                Price = selectedProduct.Price,
                 Amount = value.Amount,
-               // Total = value.price * value.amount
+                Total = selectedProduct.Price * value.Amount,
             };
-            orderproduct.Add(neworder);
+            orderproduct.Add(addOrder);
         }
 
 
         [HttpGet]
-        public ActionResult<IEnumerable<Order>> Get()
+        public ActionResult<IEnumerable<Cart>> Get()
         {
             return orderproduct;
         }
@@ -53,10 +54,6 @@ namespace shopAPI.Controllers
         //     }
 
         //     selectedProduct.Amount += value.Amount;
-
-
-
-
         // }
     }
 }

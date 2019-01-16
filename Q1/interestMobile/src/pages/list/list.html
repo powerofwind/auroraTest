@@ -9,4 +9,13 @@
 
 <ion-content>
  <h3 text-center>รายละเอียดในแต่ละปี</h3>
+
+<ion-row *ngFor="let item of allproduct">
+<ion-item col-3 text-center>ปีที่้{{item.name}}:</ion-item>
+<ion-item col-3 text-center>คงค้าง{{item.amount}}</ion-item>
+<ion-item col-3 text-center>ดอกเบี้ย{{item.price}} =</ion-item>
+<ion-item col-3 text-center>{{item.total}} x {{item.total}}/100</ion-item>
+<ion-item col-3 text-center>ยอดที่ต้องชำระ{{item.total}}</ion-item>
+
+</ion-row>
 </ion-content>
